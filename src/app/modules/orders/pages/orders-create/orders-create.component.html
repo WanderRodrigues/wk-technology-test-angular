@@ -1,0 +1,41 @@
+<div class="container" fxLayout="column" fxLayoutAlign="start top" fxLayoutGap="16px">
+  <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="4px">
+    <h1 fxFlex="70%" class="mat-h1">Novo pedido</h1>
+    <div fxFlex="30%" fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="8px">
+      <button mat-flat-button color="accent" (click)="addProducts()">ADICIONAR PRODUTO</button>
+      <button mat-button color="warn" routerLink="/clients">CANCELAR</button>
+      <button mat-flat-button color="primary" (click)="create()" [disabled]="!form.valid">SALVAR</button>
+    </div>
+  </div>
+  <div fxLayout="row wrap" fxLayoutGap="16px" fxLayoutAlign="flex-start">
+    <form fxFlex [formGroup]="form">
+      <mat-card>
+        <mat-card-content>
+          <div fxFlexAlign="start" gdGap="16px">
+            <div fxFlex="50%">
+              <mat-form-field class="full-width" appearance="fill">
+                <mat-label>Cliente</mat-label>
+                <input type="text" matInput [formControl]="clientControl" [matAutocomplete]="auto">
+                <mat-autocomplete #auto="matAutocomplete">
+                  <mat-option *ngFor="let client of filteredOptions | async" [value]="client.name"> {{client.name}}</mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
+              <mat-form-field class="full-width" appearance="fill">
+                <mat-label>Total</mat-label>
+                <input matInput placeholder="Total" [value]="form.controls['total'].value | currency" formControlName="total" readonly>
+              </mat-form-field>
+            </div>
+            <div fxFlex="50%">
+              <h2>Produtos</h2>
+              <mat-list role="list">
+                <mat-list-item role="listitem" *ngFor="let product of this.form.controls['products'].value">
+                  {{product.name}} - {{product.value | currency}}
+                </mat-list-item>
+              </mat-list>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </form>
+  </div>
+</div>

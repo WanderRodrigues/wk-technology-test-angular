@@ -1,0 +1,14 @@
+<h1>Adicionar produtos</h1>
+<div fxLayout="column" fxLayoutGap="16px">
+  <div fxFlex>
+    <mat-selection-list #list color="primary" multiple>
+      <mat-list-option (click)="change(list._value)" *ngFor="let product of products | async" [value]="product">
+        {{product.name}} - {{ product.value | currency}}
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="16px">
+    <button mat-raised-button color="primary" (click)="save()">Salvar</button>
+    <button mat-raised-button color="warn" (click)="dismiss()">Cancelar</button>
+  </div>
+</div>
