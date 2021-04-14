@@ -5,9 +5,11 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FirebaseModule } from './modules/firebase/firebase.module';
 import { MaterialModule } from './modules/material/material.module';
+import { MainComponent } from './pages/main/main.component';
 @NgModule({
   declarations: [
     AppComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,
