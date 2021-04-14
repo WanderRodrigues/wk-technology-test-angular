@@ -1,0 +1,37 @@
+<div class="container" fxLayout="column" fxLayoutAlign="start top" fxLayoutGap="16px">
+  <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="4px">
+    <h1 fxFlex="70%" class="mat-h1">Novo produto</h1>
+    <div fxFlex="30%" fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="8px">
+      <button mat-button color="warn" routerLink="/products">CANCELAR</button>
+      <button mat-flat-button color="primary" (click)="create()" [disabled]="!form.valid">SALVAR</button>
+    </div>
+  </div>
+  <div fxLayout="row wrap" fxLayoutGap="16px" fxLayoutAlign="flex-start">
+    <form fxFlex [formGroup]="form">
+      <mat-card>
+        <mat-card-content>
+          <div fxFlexAlign="start" gdGap="16px">
+            <div fxFlex="50%">
+              <mat-form-field class="full-width" appearance="fill">
+                <mat-label>Nome</mat-label>
+                <input matInput formControlName="name">
+                <mat-error *ngIf="form.controls['name'].hasError('required')">
+                  Nome é <strong>obrigatório</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div fxFlex="50%">
+              <mat-form-field class="full-width" appearance="fill">
+                <mat-label>Valor</mat-label>
+                <input matInput formControlName="value" prefix="R$ " thousandSeparator="." [allowNegativeNumbers]="false" mask="separator.2">
+                <mat-error *ngIf="form.controls['value'].hasError('required')">
+                  Valor é <strong>obrigatório</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </form>
+  </div>
+</div>
