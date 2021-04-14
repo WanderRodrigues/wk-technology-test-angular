@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FirebaseModule } from './modules/firebase/firebase.module';
-
+import { MaterialModule } from './modules/material/material.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -13,6 +13,7 @@ import { FirebaseModule } from './modules/firebase/firebase.module';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    MaterialModule,
     FirebaseModule
   ],
   providers: [
